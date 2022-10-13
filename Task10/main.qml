@@ -18,6 +18,8 @@ Window {
         id: btn
         text: "Добавить заметку"
         anchors.top: textField.bottom
+        onClicked: {
+        }
     }
 
     ListView {
@@ -25,7 +27,14 @@ Window {
         anchors.top: textField.bottom
         model: ListModel {
             id: listModel
-            Component.onCompleted:
+            Component.onCompleted: JS.dbReadAll()
         }
+        delegate: Item {
+
+        }
+    }
+
+    Component.onCompleted: {
+        JS.dbInit()
     }
 }
